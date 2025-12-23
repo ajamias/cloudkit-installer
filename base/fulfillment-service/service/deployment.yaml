@@ -86,7 +86,7 @@ spec:
         command:
         - /usr/local/bin/fulfillment-service
         - start
-        - server
+        - grpc-server
         - --log-level=debug
         - --log-headers=true
         - --log-bodies=true
@@ -98,6 +98,7 @@ spec:
         - --grpc-listener-network=unix
         - --grpc-listener-address=/run/sockets/server.socket
         - --grpc-authn-type=guest
+        - --tenancy-logic=guest
 
       - name: gateway
         image: fulfillment-service
@@ -108,7 +109,7 @@ spec:
         command:
         - /usr/local/bin/fulfillment-service
         - start
-        - gateway
+        - rest-gateway
         - --log-level=debug
         - --log-headers=true
         - --log-bodies=true
